@@ -1,4 +1,4 @@
-name: SERVER FORMAT
+name: SERVER-FORMAT
 
 on:
   push:
