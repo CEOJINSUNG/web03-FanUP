@@ -1,17 +1,13 @@
 name: SERVER-COVERAGE
 
-on:
-  push:
-    branches: [main, dev]
-  pull_request:
-    branches: [main, dev]
+on: [push, pull_request]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: "./server"
+        working-directory: "./server/services"
 
     strategy:
       matrix:
@@ -26,23 +22,9 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: gateway
-        run: |
-          cd gateway
-          npm install
-          npm run coveralls
-
       - name: services
         run: |
-          cd ./services/api
-          npm install
-          npm run coveralls
-
-          cd ../auth
-          npm install
-          npm run coveralls
-
-          cd ../ticket
+          cd ./ticket
           npm install
           npm run coveralls
 
@@ -50,3 +32,4 @@ jobs:
         uses: coverallsapp/github-action@master
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
+          path-to-lcov: ./ticket/coverage/lcov.info
