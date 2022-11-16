@@ -38,7 +38,8 @@ jobs:
         run: |
           cd ./api
           npm install
-          npm run coveralls
+          cd ../../
+          npm run api
 
       - name: Coveralls
         uses: coverallsapp/github-action@master
