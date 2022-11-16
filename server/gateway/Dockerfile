@@ -3,3 +3,4 @@ WORKDIR /usr/src/server/gateway
 COPY ./server/gateway .
 RUN npm install
 RUN npm run build
+CMD ["node", "dist/main"]
