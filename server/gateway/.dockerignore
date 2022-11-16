@@ -1,6 +1,6 @@
+node_modules
 .DS_Store
 .dockerignore
 Dockerfile
-node_modules
 npm-debug.log
 dist

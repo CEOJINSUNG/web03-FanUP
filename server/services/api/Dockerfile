@@ -1,6 +1,6 @@
-FROM node:18
-WORKDIR /server/services/api
-COPY package*.json ./
+FROM node:18-alpine
+WORKDIR /usr/src/server/services/api
+COPY ./server/services/api .
 RUN npm install
-COPY . .
-CMD npm start:prod
+RUN npm run build
+CMD ["node", "dist/main"]

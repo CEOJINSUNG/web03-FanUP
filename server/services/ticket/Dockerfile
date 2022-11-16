@@ -1,6 +1,6 @@
-FROM node:18
-WORKDIR /server/services/ticket
-COPY package*.json ./
+FROM node:18-alpine
+WORKDIR /usr/src/server/services/ticket
+COPY ./server/services/ticket .
 RUN npm install
-COPY . .
-CMD npm start:prod
+RUN npm run build
+CMD ["node", "dist/main"]
