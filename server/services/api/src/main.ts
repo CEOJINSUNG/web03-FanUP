@@ -12,6 +12,7 @@ async function bootstrap() {
       },
     },
   );
+  console.log('테스트');
   await app.listen();
 }
 bootstrap();
